@@ -10,10 +10,10 @@ export default function Nav() {
   };
 
   return (
-    <nav className="border border-y-4 border-black mt-10 bg-white px-4 sm:px-10 py-5">
+    <nav className="border border-y-4 border-black  bg-white px-4 sm:px-10 py-4 fixed w-full z-10 top-0">
       <div className="flex justify-between items-center">
-        <h1 className="font-bold text-xl sm:text-2xl">KARTHIK NAYAK</h1>
-        <div className="hidden sm:flex gap-5 text-lg">
+        <h1 className="font-bold text-md sm:text-xl">KARTHIK NAYAK</h1>
+        <div className="hidden sm:flex gap-5 text-md">
           <a href="#about">About me</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
@@ -24,7 +24,7 @@ export default function Nav() {
         </button>
       </div>
       {isMenuOpen && (
-        <div className="sm:hidden mt-4 flex flex-col gap-2 text-lg">
+        <div className="sm:hidden mt-4 flex flex-col gap-2 text-md">
           <a href="#about" onClick={toggleMenu}>
             About me
           </a>

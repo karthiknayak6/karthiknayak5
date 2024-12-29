@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <div className="h-screen max-w-7xl mx-auto pt-27">
+      <div className="h-screen max-w-7xl mx-auto mt-32">
         <About />
         <Introduction />
         <Skills />
