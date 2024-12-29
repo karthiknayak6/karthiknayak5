@@ -40,15 +40,15 @@ const skills = [
 export default function Skills() {
   return (
     <div id="skills" className="bg-orange-100 rounded-md py-5 px-5 mt-10 pb-10">
-      <div className="text-2xl font-bold ml-4 mb-8">SKILLS</div>
-      <div className="flex flex-wrap justify-center gap-10 px-10">
+      <div className="text-xl md:text-2xl  font-bold ml-4 mb-8">SKILLS</div>
+      <div className="flex flex-wrap justify-center gap-8 px-5">
         {skills.map(({ src, alt, name, bg }, index) => (
           <div
             key={index}
-            className={`flex h-20 items-center justify-center text-center w-56 py-4 ${bg} text-lg border-2 border-black rounded-md shadow-[4px_4px_0px_#000]`}
+            className={`flex min-w-28 md:min-w-36 h-10 md:h-12  items-center justify-center text-center w-23 py-4 ${bg} border-2 border-black rounded-md shadow-[4px_4px_0px_#000]`}
           >
-            <Image width={50} height={50} src={src} alt={alt} />
-            <div className="ml-3">{name}</div>
+            <Image className="w-4 h-4 md:w-6 md:h-6" src={src} alt={alt} />
+            <div className="ml-2 text-xs md:text-sm">{name}</div>
           </div>
         ))}
       </div>

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 
 import typescriptPng from "../../../public/typescript.png";
@@ -60,7 +62,7 @@ const projects: Project[] = [
       Docker containers for secure and isolated code execution. The
       platform leverages K-means clustering to suggest problems tailored
       to a user's learning speed, providing a personalized and effective
-      learning experience for developers at all skill levels`,
+      learning experience for developers at all skill levels.`,
   },
   {
     title: "Real-time Polling Application",
@@ -96,8 +98,7 @@ const projects: Project[] = [
     techs: ["golang", "redis"],
     description: `The URL Shortener Application was developed using Golang and Redis,
       focusing on efficiency and security. This application allows users
-      to shorten URLs and monitor their usage.
-      With rate limiting implemented, the platform ensures
+      to shorten URLs and monitor their usage. With rate limiting implemented, the platform ensures
       optimized performance while safeguarding against abuse.`,
   },
 ];
@@ -107,9 +108,9 @@ interface TechIconProps {
 }
 
 const TechIcon: React.FC<TechIconProps> = ({ tech }) => (
-  <div className="flex text-center items-center pl-3 mb-2 sm:mb-0">
-    <Image width={30} height={30} src={techs[tech]} alt={tech} />
-    <div className="ml-1 capitalize">{tech}</div>
+  <div className="flex text-center items-center pl-1 mb-0 sm:mb-0">
+    <Image className="w-4 h-4 md:w-6 md:h-6" src={techs[tech]} alt={tech} />
+    <div className="ml-1 capitalize text-sm md:text-base">{tech}</div>
   </div>
 );
 
@@ -117,44 +118,68 @@ interface ProjectCardProps {
   project: Project;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
-  <div className="flex flex-col sm:flex-row justify-between bg-red-200 border-t-2 border-black rounded-md shadow-[4px_4px_0px_#000] overflow-hidden">
-    <div className="w-full sm:w-[69rem] h-64 sm:h-[20rem] bg-red-400 sm:rounded-l-md border-black shadow-[0px_0px_0px_#000]">
-      <Image
-        src={project.imgSrc}
-        alt={project.title}
-        className="w-full h-full object-cover sm:rounded-l-md"
-      />
-    </div>
-    <div className="w-full p-4">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
-        <h1 className="text-2xl font-sans mb-2 sm:mb-0">{project.title}</h1>
-        <a
-          href={project.githubLink}
-          className="flex items-center cursor-pointer"
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const [isExpanded, setIsExpanded] = useState(false); // State to track description expansion
+
+  return (
+    <div className="md:mx-5 flex flex-col lg:max-h-72 lg:flex-row justify-between bg-red-200 border-t-2 border-black rounded-md shadow-[4px_4px_0px_#000] overflow-hidden">
+      <div className="w-full sm:w-full h-64 sm:h-full bg-red-400 sm:rounded-l-md border-black shadow-[0px_0px_0px_#000]">
+        <Image
+          src={project.imgSrc}
+          alt={project.title}
+          className="w-full h-full object-cover sm:rounded-l-md"
+        />
+      </div>
+      <div className="w-full p-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+          <h1 className=" text-xl font-medium font-sans mb-2 sm:mb-0">
+            {project.title}
+          </h1>
+          <a
+            href={project.githubLink}
+            className="flex items-center cursor-pointer"
+          >
+            <Image
+              src={githubPng}
+              alt="GitHub"
+              className="w-5 h-5 md:w-6 md:h-6"
+            />
+            <div className="ml-1 text-sm md:text-base">GitHub</div>
+          </a>
+        </div>
+        <div className="flex flex-wrap mx-2 mb-4">
+          {project.techs.map((tech) => (
+            <div key={tech} className="px-2 mb-2">
+              <TechIcon tech={tech} />
+            </div>
+          ))}
+        </div>
+        <p
+          className={`text-sm lg:text-md ${
+            isExpanded ? "" : "line-clamp-3"
+          } md:line-clamp-none`}
         >
-          <Image src={githubPng} alt="GitHub" width={35} height={35} />
-          <div className="ml-1">GitHub</div>
-        </a>
+          {project.description}
+        </p>
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className={`text-blue-500 mt-2 text-xs ${
+            isExpanded ? "sm:block" : "block"
+          } md:hidden`}
+        >
+          {isExpanded ? "Show Less" : "Read More"}
+        </button>
       </div>
-      <div className="flex flex-wrap -mx-2 mb-4">
-        {project.techs.map((tech) => (
-          <div key={tech} className="px-2 mb-2">
-            <TechIcon tech={tech} />
-          </div>
-        ))}
-      </div>
-      <p className="text-sm sm:text-base">{project.description}</p>
     </div>
-  </div>
-);
+  );
+};
 
 const Projects: React.FC = () => (
   <div
     id="projects"
     className="bg-orange-100 rounded-md py-5 px-5 mt-5 pb-10 space-y-6"
   >
-    <div className="text-2xl font-bold ml-4 mb-4">PROJECTS</div>
+    <div className="text-xl md:text-2xl font-bold ml-4 mb-4">PROJECTS</div>
     {projects.map((project) => (
       <ProjectCard key={project.title} project={project} />
     ))}

@@ -43,16 +43,16 @@ export default function ContactMe() {
           isLoading ? "opacity-50" : ""
         }`}
       >
-        <div className="text-xl font-bold ml-5 mt-5 mb-4 py-2 px-4 bg-red-100 border-4 border-black shadow-[5px_5px_0_0_black] rounded-md inline-block">
+        <div className="md:mt-6 md:ml-9 text-base md:text-lg font-bold ml-5 mt-3 mb-2 py-2 px-4 bg-red-100 border-4 border-black shadow-[5px_5px_0_0_black] rounded-md inline-block">
           CONTACT ME
         </div>
-        <div className="flex flex-col px-4 sm:px-10 mt-6">
+        <div className="flex flex-col px-4 sm:px-10 mt-4">
           <div className="flex flex-col sm:flex-row justify-evenly sm:space-x-4 space-y-4 sm:space-y-0">
             <input
               type="text"
               name="firstName"
               placeholder="Enter your first name"
-              className="w-full h-12 text-xl bg-light px-3 border-black border-2 rounded-md shadow-[3px_3px_0px_#000]"
+              className="w-full md:h-12 h-9 md:text-lg text-sm bg-light px-3 border-black border-2 rounded-md shadow-[3px_3px_0px_#000]"
               value={formData.firstName}
               onChange={(e) =>
                 setFormData({ ...formData, firstName: e.target.value })
@@ -62,7 +62,7 @@ export default function ContactMe() {
             <input
               type="text"
               placeholder="Enter your last name"
-              className="w-full h-12 text-xl bg-light px-3 border-black border-2 rounded-md shadow-[3px_3px_0px_#000]"
+              className="w-full md:h-12 h-9 md:text-lg text-sm  bg-light px-3 border-black border-2 rounded-md shadow-[3px_3px_0px_#000]"
               name="lastName"
               value={formData.lastName}
               onChange={(e) =>
@@ -75,7 +75,7 @@ export default function ContactMe() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full h-12 text-xl bg-light px-3 border-black border-2 rounded-md shadow-[3px_3px_0px_#000]"
+              className="w-full md:h-12 h-9 md:text-lg text-sm  bg-light px-3 border-black border-2 rounded-md shadow-[3px_3px_0px_#000]"
               name="email"
               value={formData.email}
               onChange={(e) =>
@@ -85,8 +85,8 @@ export default function ContactMe() {
             />
           </div>
           <textarea
-            className="text-xl bg-light px-3 border-black border-2 rounded-md shadow-[3px_3px_0px_#000] mt-4 py-2 w-full"
-            rows={5}
+            className="md:text-lg text-sm  bg-light px-3 border-black border-2 rounded-md shadow-[3px_3px_0px_#000] mt-4 py-2 w-full"
+            rows={4}
             placeholder="Enter your message"
             name="message"
             value={formData.message}
@@ -99,7 +99,7 @@ export default function ContactMe() {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="w-32 h-12 mt-5 mb-5 bg-red-400 border-black border-2 shadow-[4px_4px_0_0_rgba(0,0,0,0.5)]"
+            className="text-sm md:text-lg font-bold w-20 h-8 md:w-32 md:h-12 mt-5 mb-5 bg-red-400 border-black border-2 shadow-[4px_4px_0_0_rgba(0,0,0,0.5)]"
             disabled={isLoading}
           >
             Submit
