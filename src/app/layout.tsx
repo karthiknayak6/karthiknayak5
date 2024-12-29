@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// Load the Lato font with subsets
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700"], // Specify the weights you need
+});
 
 export const metadata: Metadata = {
   title: "Karthik Nayak",
@@ -18,9 +22,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <link rel="icon" href="./favicon.ico" sizes="any" />
-      <body className="{inter.className} bg-orange-100">{children}</body>
+    <html lang="en" className={lato.className}>
+      {" "}
+      {/* Apply the Lato font */}
+      <head>
+        <link rel="icon" href="./favicon.ico" sizes="any" />
+      </head>
+      <body className="bg-orange-100">{children}</body>
     </html>
   );
 }
