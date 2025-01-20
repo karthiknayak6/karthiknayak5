@@ -48,7 +48,7 @@ export default function Skills() {
             className={`flex min-w-28 md:min-w-36 h-10 md:h-12  items-center justify-center text-center w-23 py-4 ${bg} border-2 border-black rounded-md shadow-[4px_4px_0px_#000]`}
           >
             <Image className="w-4 h-4 md:w-6 md:h-6" src={src} alt={alt} />
-            <div className="ml-2 text-xs md:text-sm">{name}</div>
+            <div className="ml-2 text-xs md:text-sm font-bold">{name}</div>
           </div>
         ))}
       </div>

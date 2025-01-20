@@ -122,7 +122,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const [isExpanded, setIsExpanded] = useState(false); // State to track description expansion
 
   return (
-    <div className="md:mx-5 flex flex-col lg:max-h-72 lg:flex-row justify-between bg-red-200 border-t-2 border-black rounded-md shadow-[4px_4px_0px_#000] overflow-hidden">
+    <div className="md:mx-5 flex flex-col lg:max-h-72 lg:flex-row justify-between bg-red-300 border-t-2 border-black rounded-md shadow-[4px_4px_0px_#000] overflow-hidden">
       <div className="w-full sm:w-full h-64 sm:h-full bg-red-400 sm:rounded-l-md border-black shadow-[0px_0px_0px_#000]">
         <Image
           src={project.imgSrc}

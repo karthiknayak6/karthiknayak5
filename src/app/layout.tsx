@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { Montserrat } from "next/font/google"; // Change from Lato to Montserrat
 import "./globals.css";
 
-// Load the Lato font with subsets
-const lato = Lato({
+// Load the Montserrat font with subsets
+const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "700"], // Specify the weights you need
 });
@@ -22,9 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={lato.className}>
-      {" "}
-      {/* Apply the Lato font */}
+    <html lang="en" className={montserrat.className}>
       <head>
         <link rel="icon" href="./favicon.ico" sizes="any" />
       </head>
